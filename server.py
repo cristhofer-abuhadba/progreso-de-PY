@@ -25,11 +25,11 @@ ip = socket.gethostbyname(hostname)
 def handle_client(conn, addr):
     print(f"Conexión establecida con {addr}")
     try:
-        # Recibimos usuario
+        
         usuario = conn.recv(1024).decode().strip()
         print(f"Usuario recibido: {usuario}")
 
-        # Recibimos contraseña
+        
         contraseña = conn.recv(1024).decode().strip()
         print(f"Contraseña recibida: {contraseña}")
 
@@ -44,8 +44,7 @@ def handle_client(conn, addr):
                     break
                 print(f"Mensaje recibido de {usuario}: {data}")
 
-                # Aquí decides qué enviar de vuelta
-                # Por ejemplo, responder lo mismo:
+               
                 respuesta = f"Servidor recibió: {data}"
                 conn.send(respuesta.encode())
 
@@ -71,5 +70,5 @@ def start_server():
         cliente_thread = threading.Thread(target=handle_client, args=(cliente_socket, addr))
         cliente_thread.start()
 
-if __name__ == "__main__":
-    start_server()
+
+start_server()
